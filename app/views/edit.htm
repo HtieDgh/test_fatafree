@@ -1,0 +1,33 @@
+<form action="<check if="{{ @action=='edit' }}"><true>{{@main_dir}}/{{@table}}/save/{{@id}}</true> <false>{{@main_dir}}/{{@table}}/save</false> </check>" method="post">
+<table>
+ 
+	<repeat group="{{@table_col}}" key="{{@key}}" value="{{@item}}">
+			<tr><td>{{@item.1}}</td><td>
+			<check if="{{@item.select}}">
+ 
+				<true>
+					<select name="saver[{{@item.0}}]">
+					<repeat group="{{@item.select}}" key="{{@key2}}" value="{{@item2}}">
+						<option value="{{@item2.0}}"
+						<check if="{{@item2.0==@item.2}}">
+							<true>
+								selected
+							</true>
+						</check>
+						>{{@item2.1}}</option>
+					</repeat>
+					</select>
+				</true>
+ 
+				<false>
+					<input type="text" value="{{@item.2}}" name="saver[{{@item.0}}]">
+				</false>
+ 
+			</check>
+			</td></tr>
+	</repeat>
+ 
+</table>
+<input type="submit" value="<check if="{{@action=='edit'}}"><true>Изменить</true><false>Добавить</false></check>">
+<a href="{{@main_dir}}/{{@table}}" title="Отмена. Вернуться назад.">Отмена</a>
+</form>

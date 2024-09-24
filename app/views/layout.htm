@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang='ru'>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<check if="{{@content!='mainPage.htm'}}"><true>
+    		<script src='http://a931266j.beget.tech/TRSBD/script/jquery-3.3.1.js'></script>
+    		<script src='http://a931266j.beget.tech/lr4/app/views/script/main.js'></script>
+    	</true></check>
+		<title>{{@my_title}}</title>
+	<body>
+	   <div class="menu_wrap">
+	       <div class='main_menu'>
+                <span>
+                    <a href="{{@main_dir}}" title="Главная"
+     
+    				<check if="{{@table}}">
+    					<false>
+    						style="font-weight: bold; color: red;"
+    					</false>
+    				</check>
+     
+    				>Главная</a>
+                </span>
+            <repeat group="{{@tables}}" key="{{@key}}" value="{{@item}}">
+                <span>
+                    <a href="{{@main_dir}}/{{@key}}" title="{{@item.lable}}"
+     
+    				<check if="{{@key==@table}}">
+    					<true>
+    						style="font-weight: bold; color: red;"
+    					</true>
+    				</check>
+     
+    				>{{@item.lable}}</a>
+                </span>
+            </repeat>
+	       </div>
+	   </div>
+     <div class="main_content" value='{{@content}}'>
+        <include href="{{@content}}" />
+     </div>
+	<footer>	
+	    <check if="{{@content!='mainPage.htm'}}">
+	        <true>
+	            Нажмите 'B' для вызова <a id='show_menu' href="#">меню</a><br>Нажмите 'A' для <a id='add_rec_btn' href="#">добавления записи</a>
+	            <span> {{@user_name}}</span>
+	       </true>
+	   </check>
+	   u_name:{{@qukie[name]}}<br>
+	   u_log:{{@qukie[security_login]}}<br>
+	   u_pass:{{@qukie[security_password]}}<br>
+	</footer>
+		<style>
+		    <include href="css/reset.css"/>
+		</style>
+		   <style>
+		    <include href="css/styles.css"/>
+		</style> 
+	</body>
+</html>
+

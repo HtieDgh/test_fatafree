@@ -1,0 +1,21 @@
+BALANCE.html
+<table class="cur_tab">
+	<tr class="table_head">
+        <repeat group="{{@table_col}}" key="{{@key}}" value="{{@item}}">
+                <th> <span class="table_head_col">{{@item.1}}</span></th>
+        </repeat>
+	</tr>
+ 
+	<repeat group="{{@result}}" value="{{@item}}">
+		<tr class='cur_rec'>
+            <repeat group="{{@item}}" value="{{@item_data}}">
+                    
+                    <td>{{@item_data}}</td>
+            </repeat>
+
+			</check>
+		</tr>
+	</repeat>
+ 
+</table>
+

@@ -1,0 +1,43 @@
+<div class='topBar'>
+    <a id='flt_reset' href="{{@main_dir}}/{{@table}}/">Сбросить фильтры</a>
+    <div style="dispaly:block;">
+         <form action='{{@main_dir}}/{{@table}}/' method='GET'> 
+            <input type='text' placeholder='Поиск по текущей таблице...' name='serach_field'>
+            <input type='submit' value='Найти'>
+         </form>
+    </div>
+</div>
+ <a href="{{@main_dir}}/{{@table}}/edit/">Добавить</a>
+<table class="cur_tab">
+	<tr class="table_head">
+        <repeat group="{{@table_col}}" key="{{@key}}" value="{{@item}}">
+                <th><a id="{{@item.0}}" class="table_head_col" href="{{@main_dir}}/{{@table}}/filter/{{@item.0}}">{{@item.1}}
+                        <check if="{{@cur_flt==@item.0}}"> 
+                            <true>
+                                <check if="{{@fltDir}}"><true>&#8593;</true><false>&#8595;</false></check>
+                            </true>
+                        </check>
+                    </a></th>
+        </repeat>
+		<th <check if="{{@table==4}}"> <true>colspan="3"</true><false>colspan="2"</false></check>>УПРАВЛЕНИЕ</th>
+	</tr>
+ 
+	<repeat group="{{@result}}" value="{{@item}}">
+		<tr class='cur_rec'>
+            <repeat group="{{@item}}" value="{{@item_data}}">
+                    <td>{{@item_data}}</td>
+            </repeat>
+			<td><a href="{{@main_dir}}/{{@table}}/edit/{{@item[@table_primary]}}">Изменить</a></td>
+			<td><a href="{{@main_dir}}/{{@table}}/delete/{{@item[@table_primary]}}">Удалить</a></td>
+			<check if="{{@table==4}}"> 
+			    <true>
+			       <td><a href="{{@main_dir}}/20/balance/{{@item[@table_primary]}}">Проверить баланс</a></td>
+			    </true>
+			    
+			</check>
+		</tr>
+	</repeat>
+ 
+</table>
+<p>{{@query}}</p><br><p>filter {{@cur_flt}}</p>
+
